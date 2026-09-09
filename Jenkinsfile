@@ -25,7 +25,7 @@ pipeline {
                 echo 'Checking out source code'
 
                 git(
-                    branch: 'main',
+                    branch: 'master',
                     url: 'https://github.com/NAVITECHDEVOPS/sample-node-app.git'
                 )
             }
