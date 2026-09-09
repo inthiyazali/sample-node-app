@@ -21,19 +21,12 @@ pipeline {
 
         stage('Checkout') {
             steps {
-
-                echo 'Checking out source code'
-
-                git(
-                    branch: 'master',
-                    url: 'https://github.com/NAVITECHDEVOPS/sample-node-app.git'
-                )
+                echo 'Source code already checked out by Jenkins'
             }
         }
 
         stage('Application Test') {
             steps {
-
                 echo 'Testing Node.js application'
 
                 sh '''
@@ -45,7 +38,6 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-
                 echo 'Building Docker image'
 
                 sh '''
@@ -57,18 +49,19 @@ pipeline {
 
         stage('Docker Test') {
             steps {
-
                 echo 'Testing Docker container'
 
                 sh '''
+                    docker rm -f devops-project-test 2>/dev/null || true
+
                     docker run -d \
                     --name devops-project-test \
-                    -p 8080:8080 \
+                    -p 8081:8080 \
                     ${ECR_IMAGE}:${IMAGE_TAG}
 
                     sleep 5
 
-                    curl -f http://localhost:8080/
+                    curl -f http://localhost:8081/
 
                     docker stop devops-project-test
                     docker rm devops-project-test
@@ -78,7 +71,6 @@ pipeline {
 
         stage('ECR Login') {
             steps {
-
                 echo 'Logging into Amazon ECR'
 
                 sh '''
@@ -93,7 +85,6 @@ pipeline {
 
         stage('Push Image') {
             steps {
-
                 echo 'Pushing Docker image to ECR'
 
                 sh '''
@@ -104,7 +95,6 @@ pipeline {
 
         stage('Configure EKS') {
             steps {
-
                 echo 'Configuring EKS'
 
                 sh '''
@@ -119,7 +109,6 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-
                 echo 'Deploying application to EKS'
 
                 sh '''
@@ -140,7 +129,6 @@ pipeline {
 
         stage('Verify Deployment') {
             steps {
-
                 echo 'Verifying EKS deployment'
 
                 sh '''
