@@ -52,7 +52,7 @@ pipeline {
                 echo 'Testing Docker container'
 
                 sh '''
-                    docker rm -f devops-project-test 2>/dev/null || true
+                    docker rm -f inthu-test 2>/dev/null || true
 
                     docker run -d \
                     --name inthu \
@@ -63,8 +63,8 @@ pipeline {
 
                     curl -f http://localhost:8081/
 
-                    docker stop devops-project-test
-                    docker rm devops-project-test
+                    docker stop inthu-test
+                    docker rm inthu-test
                 '''
             }
         }
@@ -132,10 +132,10 @@ pipeline {
                 echo 'Verifying EKS deployment'
 
                 sh '''
-                    kubectl get deployment devops-project
+                    kubectl get deployment inthu
 
                     kubectl get pods \
-                    -l app=devops-project
+                    -l app=inthu
 
                     kubectl get service devops-project
                 '''
