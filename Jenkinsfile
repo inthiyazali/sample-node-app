@@ -6,11 +6,11 @@ pipeline {
 
         AWS_REGION = 'ap-south-1'
 
-        ECR_REGISTRY = '467765330161.dkr.ecr.ap-south-1.amazonaws.com'
+        ECR_REGISTRY = '168286911560.dkr.ecr.ap-south-1.amazonaws.com'
 
         ECR_REPOSITORY = 'inthu'
 
-        ECR_IMAGE = '467765330161.dkr.ecr.ap-south-1.amazonaws.com/inthu'
+        ECR_IMAGE = '168286911560.dkr.ecr.ap-south-1.amazonaws.com/inthu'
 
         EKS_CLUSTER = 'tcs'
 
