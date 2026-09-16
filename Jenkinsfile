@@ -8,7 +8,7 @@ pipeline {
 
         ECR_REGISTRY = '467765330161.dkr.ecr.ap-south-1.amazonaws.com'
 
-        ECR_REPOSITORY = 'devops-project'
+        ECR_REPOSITORY = 'inthu'
 
         ECR_IMAGE = '467765330161.dkr.ecr.ap-south-1.amazonaws.com/devops-project'
 
