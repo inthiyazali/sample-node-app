@@ -121,7 +121,7 @@ pipeline {
                     kubectl apply -f k8s/service.yaml
 
                     kubectl rollout status \
-                    deployment/inthu \
+                    deployment/devops-project \
                     --timeout=180s
                 '''
             }
