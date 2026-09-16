@@ -55,7 +55,7 @@ pipeline {
                     docker rm -f inthu-test 2>/dev/null || true
 
                     docker run -d \
-                    --name inthu \
+                    --name inthu-test \
                     -p 8081:8080 \
                     ${ECR_IMAGE}:${IMAGE_TAG}
 
