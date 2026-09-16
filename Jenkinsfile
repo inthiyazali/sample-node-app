@@ -132,7 +132,7 @@ pipeline {
                 echo 'Verifying EKS deployment'
 
                 sh '''
-                    kubectl get deployment inthu
+                    kubectl get deployment devops-project
 
                     kubectl get pods \
                     -l app=inthu
