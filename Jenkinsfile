@@ -10,7 +10,7 @@ pipeline {
 
         ECR_REPOSITORY = 'inthu'
 
-        ECR_IMAGE = '467765330161.dkr.ecr.ap-south-1.amazonaws.com/devops-project'
+        ECR_IMAGE = '467765330161.dkr.ecr.ap-south-1.amazonaws.com/inthu'
 
         EKS_CLUSTER = 'tcs'
 
@@ -55,7 +55,7 @@ pipeline {
                     docker rm -f devops-project-test 2>/dev/null || true
 
                     docker run -d \
-                    --name devops-project-test \
+                    --name inthu \
                     -p 8081:8080 \
                     ${ECR_IMAGE}:${IMAGE_TAG}
 
@@ -121,7 +121,7 @@ pipeline {
                     kubectl apply -f k8s/service.yaml
 
                     kubectl rollout status \
-                    deployment/devops-project \
+                    deployment/inthu \
                     --timeout=180s
                 '''
             }
